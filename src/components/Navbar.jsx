@@ -92,7 +92,6 @@ const Navbar = ({ onJoinNow }) => {
             >
               {section === "contact" && <i className="fas fa-phone"></i>}
               {section.charAt(0).toUpperCase() + section.slice(1)}
-              {activeSection === section && <span className="dot"></span>}
             </a>
           </li>
         ))}
