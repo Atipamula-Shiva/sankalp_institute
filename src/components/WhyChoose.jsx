@@ -2,50 +2,6 @@
 import React from "react";
 
 const WhyChoose = () => {
-  const sectionStyle = {
-    padding: "3rem 1.5rem",
-    background: "linear-gradient(135deg, #f8f6f3, #f0ece4)",
-    margin: "0 auto",
-  };
-
-  const titleStyle = {
-    fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-    fontWeight: 700,
-    color: "#0f1a2b",
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-    marginBottom: "1.5rem",
-    borderLeft: "5px solid #c9a84c",
-    paddingLeft: "1.2rem",
-  };
-
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-    gap: "1rem",
-  };
-
-  const itemStyle = {
-    background: "white",
-    padding: "0.8rem 1.2rem",
-    borderRadius: "50px",
-    fontSize: "clamp(0.85rem, 1.1vw, 0.95rem)",
-    fontWeight: 500,
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-    boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
-    border: "1px solid #e8e0d8",
-    transition: "all 0.3s ease",
-  };
-
-  const iconStyle = {
-    color: "#c9a84c",
-    fontSize: "1rem",
-    width: "1.2rem",
-  };
-
   const benefits = [
     { icon: "fa-user-graduate", text: "IIT Faculty" },
     { icon: "fa-users", text: "Small Batches" },
@@ -56,20 +12,88 @@ const WhyChoose = () => {
   ];
 
   return (
-    <div style={sectionStyle} id="why">
-      <h2 style={titleStyle}>
-        <i className="fas fa-question-circle" style={{ color: "#c9a84c", fontSize: "clamp(1.5rem, 3vw, 2rem)" }}></i>
-        WHY CHOOSE SANKALP?
-      </h2>
-      <div style={gridStyle}>
-        {benefits.map((benefit, index) => (
-          <span key={index} style={itemStyle}>
-            <i className={`fas ${benefit.icon}`} style={iconStyle}></i>
-            {benefit.text}
-          </span>
-        ))}
+    <section className="why-choose" id="why">
+      <div className="container">
+        <h2 className="section-title">
+          <i className="fas fa-question-circle"></i>
+          WHY CHOOSE SANKALP?
+        </h2>
+        <div className="benefits-grid">
+          {benefits.map((benefit, index) => (
+            <div key={index} className="benefit-item">
+              <i className={`fas ${benefit.icon}`}></i>
+              {benefit.text}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+
+      <style>{`
+        .why-choose {
+          padding: 2rem 0;
+          background: linear-gradient(135deg, #f8f6f3, #f0ece4);
+          width: 100%;
+        }
+
+        .section-title {
+          font-size: clamp(1.5rem, 5vw, 2.5rem);
+          font-weight: 700;
+          color: #0f1a2b;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 1rem;
+          border-left: 4px solid #c9a84c;
+          padding-left: 0.8rem;
+        }
+
+        .section-title i {
+          color: #c9a84c;
+        }
+
+        .benefits-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 0.8rem;
+          width: 100%;
+        }
+
+        .benefit-item {
+          background: white;
+          padding: 0.6rem 0.8rem;
+          border-radius: 50px;
+          font-size: clamp(0.75rem, 2vw, 0.9rem);
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+          border: 1px solid #e8e0d8;
+        }
+
+        .benefit-item i {
+          color: #c9a84c;
+        }
+
+        @media (min-width: 640px) {
+          .benefits-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .why-choose { padding: 3rem 0; }
+          .benefit-item { padding: 0.8rem 1.2rem; }
+        }
+
+        @media (min-width: 1024px) {
+          .benefits-grid { gap: 1.2rem; }
+          .benefit-item { padding: 1rem 1.5rem; font-size: 1rem; }
+        }
+      `}</style>
+    </section>
   );
 };
 
